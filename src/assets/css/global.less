@@ -1,0 +1,123 @@
+html, body {
+    height:100%;
+    overflow-y: auto;
+}
+
+body {
+    background-color: #f0f2f5;
+    width:100% !important;
+}
+
+#app {
+    height:100%;
+    background-color: #f0f2f5;
+}
+
+h1, h2, h3,h4 {
+    margin:0;
+    padding:0;
+}
+
+.ant-layout {
+    height:auto;/*界面左侧是menu，右侧是table应用时，如果这里设置为100%，当table内容太高时，menu可能会不够高，这里设置为auto会自动调整*/
+    min-height: 100%;/*界面左侧是menu，右侧是table应用时，如果table内容不够多，menu可能太短，故设置最小需要100%的高度*/
+}
+
+.ant-layout-header {
+    display: flex;
+    background-color: #001529;
+    padding:0px;
+    padding-inline:0px !important;
+}
+
+.anticon-menu-fold {
+    font-size:20px;
+    color:hsla(0,0%,100%,.65);
+    line-height: 64px;
+    padding:0 20px;
+}
+
+.anticon-menu-fold:hover {
+    color:#1890ff;
+}
+
+.anticon-menu-unfold {
+    font-size:20px;
+    color:hsla(0,0%,100%,.65);
+    line-height: 64px;
+    padding:0 20px;
+}
+
+.anticon-menu-unfold:hover {
+    color:#1890ff;
+}
+
+.logo {
+    a {
+        align-items: center;
+        display: flex;
+        margin-left: 24px;
+        height: 64px;
+    }
+    height:64px;
+    line-height: 64px;
+    h1 {
+        color:#fff;
+        margin-left: 10px;
+    }
+    img {
+        height:30px;
+        display: inline-block;
+    }
+}
+
+.ant-menu .ant-menu-item:first-child {
+    margin-top:0;
+}
+
+.ant-layout-content {
+    margin-top:0px;
+}
+
+.ant-tabs-tabpane .ant-layout-content {
+    padding:0;
+}
+
+.ant-btn {
+    border-radius: 5px;
+}
+
+.top-menus {
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.del-btn {
+    color: #E21818;
+    cursor: pointer;
+    :hover {
+        color:#E01010;
+    }
+}
+
+.edit-btn {
+    color: #1890ff;
+    cursor: pointer;
+    :hover {
+        color:#1080f0;
+    }
+}
+
+.ant-table-striped .table-striped td {
+    background-color: #fafafa;
+}
+
+.middle-text {
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    text-align:justify;
+}
+
