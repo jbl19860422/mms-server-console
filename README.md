@@ -61,4 +61,4 @@ after deploy, you start mms-server:
 ../bin/mms-live-server -c ../bin/config -d
 ```
 then you can visit the console by:
-http://ip:8080/console/
+http://ip:8080/console/index.html
