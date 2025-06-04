@@ -9,7 +9,7 @@ npm install
 # Debug mode
 in debuging phase you might wish to run
 ```
-npm run dev
+npm run dev --host 0.0.0.0
 ```
 
 and you can open http://localhost:5173/ to browse the console.
