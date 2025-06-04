@@ -25,6 +25,7 @@
                                     @confirm="handleCutoffStream(record)">
                                     <a-button type="primary" danger>禁推</a-button>
                                 </a-popconfirm>
+                                <a-button type="primary" @click="playStream(record)">播放</a-button>
                             </a-col>
                         </a-row>
                     </div>
@@ -48,14 +49,21 @@
                 </template>
             </a-table>
         </div>
+        
+        <!-- 播放器 -->
+        <PlayerDlg ref="PlayerDlgRef" v-show="showPlayerDlg" @hide="showPlayerDlg = false"/>
     </a-spin>
 </template>
 <script setup lang="ts">
-import { onMounted, reactive, watch } from 'vue';
+import { onMounted, reactive, watch, ref } from 'vue';
 import api from "@/api/api";
 import utils from "@/utils/utils";
 import { message } from 'ant-design-vue';
 import { DeleteFilled } from '@ant-design/icons-vue';
+import PlayerDlg from "@/components/PlayerDlg.vue"
+
+const showPlayerDlg = ref(false);
+const PlayerDlgRef = ref();
 
 const state = reactive({
     loading:false,
@@ -134,6 +142,10 @@ const state = reactive({
         },
     ],
 });
+
+const playStream = (record) => {
+    PlayerDlgRef.value.show(record.stream);
+}
 
 watch(() => state.selDomain, () => {
     const apps = state.domains[state.selDomain].apps;
