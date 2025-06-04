@@ -1,7 +1,7 @@
 <template>
     <a-modal v-model:visible="state.visible" title="player" style="width:50vw" @cancel="hide">
         <div style="display:flex;justify-content: center">
-            <video ref="VideoElement" controls style="width:80vw;" autoplay muted></video>
+            <video ref="VideoElement" controls style="width:100%;" autoplay muted></video>
         </div>
         <template #footer>
         </template>
