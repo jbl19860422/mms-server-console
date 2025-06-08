@@ -74,6 +74,10 @@ const queryPlayDomainAndApp = async () => {
     for (const key in domains) {
         const domainCfg = domains[key];
         if (domainCfg.type == "play" && domainCfg.publish_domain == state.stream.domain) {
+            if (state.playDomain == '') {
+                state.playDomain = domainCfg.name;
+            }
+
             state.playDomainOpts.push({
                 label: domainCfg.name,
                 value: domainCfg.name
@@ -81,6 +85,10 @@ const queryPlayDomainAndApp = async () => {
 
             const apps = domainCfg.apps;
             for (const app in apps) {
+                if (state.playApp == '') {
+                    state.playApp = app;
+                }
+                
                 state.playAppOpts.push({
                     label: app,
                     value: app,
