@@ -156,11 +156,13 @@ onMounted(() => {
 
 onUnmounted(() => {
     if (state.player) {
-        if (state.player.type == "flvjs") {
-            state.player.destroy()
+        if (typeof state.player.destroy === 'function') {
+            state.player.destroy();
         }
 
-        state.player = null
+        if (typeof state.player.detachMediaElement === 'function') {
+            state.player.detachMediaElement();
+        }
     }
 })
 
