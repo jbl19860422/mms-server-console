@@ -62,3 +62,9 @@ after deploy, you start mms-server:
 ```
 then you can visit the console by:
 http://ip:8080/console/index.html
+
+* **player**
+
+we support many format player：hls,flv,mpegts
+
+![控制台播放页面](images/player.png)

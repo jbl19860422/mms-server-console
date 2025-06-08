@@ -99,6 +99,8 @@ const play = () => {
         if (typeof state.player.detachMediaElement === 'function') {
             state.player.detachMediaElement();
         }
+
+        state.player = null;
     }
     // @ts-ignore
     if (state.suffix == ".flv") {
@@ -163,6 +165,8 @@ onUnmounted(() => {
         if (typeof state.player.detachMediaElement === 'function') {
             state.player.detachMediaElement();
         }
+
+        state.player = null;
     }
 })
 

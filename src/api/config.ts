@@ -5,7 +5,7 @@ const header = {
 
 const getBaseUrl = () => {
     if (import.meta.env.MODE === 'development') {
-        return 'http://192.168.172.128:8080'
+        return 'http://192.168.108.211:8080'
     }
 
     const protocol = window.location.protocol;
