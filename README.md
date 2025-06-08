@@ -67,4 +67,4 @@ http://ip:8080/console/index.html
 
 we support many format player：hls,flv,mpegts
 
-![控制台播放页面](images/player.png)
+![控制台播放页面](images/player.jpg)
