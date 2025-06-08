@@ -14,8 +14,13 @@
     "ant-design-vue": "^4.2.6",
     "axios": "^1.9.0",
     "cross-env": "^7.0.3",
+    "hls.js": "^1.6.5",
     "less-loader": "^12.3.0",
+    "mpegts.js": "^1.8.0",
     "path": "^0.12.7",
+    "video.js": "^8.23.3",
+    "videojs-contrib-hls": "^5.15.0",
+    "videojs-flash": "^2.2.1",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1",
     "vuex": "^4.1.0"

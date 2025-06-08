@@ -144,7 +144,7 @@ const state = reactive({
 });
 
 const playStream = (record) => {
-    PlayerDlgRef.value.show(record.stream);
+    PlayerDlgRef.value.show(record);
 }
 
 watch(() => state.selDomain, () => {
