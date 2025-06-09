@@ -35,7 +35,7 @@
                     <div>
                         <div v-if="record.vcodec">
                             <span>{{ record.vcodec.codec_name }} ({{ record.vcodec.width }} x {{ record.vcodec.height
-                                }})@{{ record.vcodec.fps }}</span>
+                            }})@{{ record.vcodec.fps }}</span>
                         </div>
                     </div>
                 </template>
@@ -49,9 +49,9 @@
                 </template>
             </a-table>
         </div>
-        
+
         <!-- 播放器 -->
-        <PlayerDlg ref="PlayerDlgRef" v-show="showPlayerDlg" @hide="showPlayerDlg = false"/>
+        <PlayerDlg ref="PlayerDlgRef" v-show="showPlayerDlg" @hide="showPlayerDlg = false" />
     </a-spin>
 </template>
 <script setup lang="ts">
@@ -66,7 +66,7 @@ const showPlayerDlg = ref(false);
 const PlayerDlgRef = ref();
 
 const state = reactive({
-    loading:false,
+    loading: false,
     selDomain: '',
     domains: {},
     publishDomainsOpt: [],
@@ -79,11 +79,18 @@ const state = reactive({
             dataIndex: 'domain',
             key: 'domain',
             align: 'center',
+            fixed: 'left',
         },
         {
             title: 'app',
             dataIndex: 'app',
             key: 'app',
+            align: 'center',
+        },
+        {
+            title: '客户端ip',
+            dataIndex: 'client_ip',
+            key: 'client_ip',
             align: 'center',
         },
         {
