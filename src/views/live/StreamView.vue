@@ -79,6 +79,7 @@ const state = reactive({
             dataIndex: 'domain',
             key: 'domain',
             align: 'center',
+            width: 100,
             fixed: 'left',
         },
         {
@@ -92,6 +93,46 @@ const state = reactive({
             dataIndex: 'client_ip',
             key: 'client_ip',
             align: 'center',
+            customRender: (item: any) => {
+                if (!item.record) {
+                    return "";
+                }
+
+                const record = item.record;
+                if (!record.session) {
+                    return "";
+                }
+                const session = record.session;
+
+                if (!session.conn) {
+                    return "";
+                }
+
+                return session.conn.remote_address;
+            }
+        },
+        {
+            title: '服务器ip',
+            dataIndex: 'server_ip',
+            key: 'server_ip',
+            align: 'center',
+            customRender: (item: any) => {
+                if (!item.record) {
+                    return "";
+                }
+
+                const record = item.record;
+                if (!record.session) {
+                    return "";
+                }
+                const session = record.session;
+
+                if (!session.conn) {
+                    return "";
+                }
+
+                return session.conn.local_address;
+            }
         },
         {
             title: '流名称',
@@ -120,10 +161,50 @@ const state = reactive({
             slots: { customRender: 'vcodec' },
         },
         {
-            title: '码率',
-            dataIndex: 'bitrate',
-            key: 'bitrate',
+            title: '视频码率(kbps)',
+            dataIndex: 'vbitrate',
+            key: 'vbitrate',
             align: 'center',
+            customRender: (item: any) => {
+                if (!item.record) {
+                    return "";
+                }
+
+                const record = item.record;
+                if (!record.session) {
+                    return "";
+                }
+                const session = record.session;
+
+                if (!session.vbitrate) {
+                    return "";
+                }
+
+                return session.vbitrate.in_kbps.toFixed(2);
+            }
+        },
+        {
+            title: '音频码率(kbps)',
+            dataIndex: 'abitrate',
+            key: 'abitrate',
+            align: 'center',
+            customRender: (item: any) => {
+                if (!item.record) {
+                    return "";
+                }
+
+                const record = item.record;
+                if (!record.session) {
+                    return "";
+                }
+                const session = record.session;
+
+                if (!session.abitrate) {
+                    return "";
+                }
+
+                return session.abitrate.in_kbps.toFixed(2);
+            }
         },
         {
             title: '播放人数',
