@@ -32,6 +32,7 @@ import { reactive, ref, defineEmits, onMounted, nextTick, onUnmounted, computed 
 import { message } from 'ant-design-vue';
 import api from '@/api/api';
 import Hls from 'hls.js';
+import * as dashjs from 'dashjs'
 
 const VideoElement = ref(null)
 // 状态数据
@@ -53,6 +54,7 @@ const state = reactive({
         { label: ".flv", value: ".flv" },
         { label: ".m3u8", value: ".m3u8" },
         { label: ".ts", value: ".ts" },
+        { label: ".mpd", value: ".mpd" },
     ],
 
     player: null,
@@ -88,7 +90,7 @@ const queryPlayDomainAndApp = async () => {
                 if (state.playApp == '') {
                     state.playApp = app;
                 }
-                
+
                 state.playAppOpts.push({
                     label: app,
                     value: app,
@@ -106,6 +108,10 @@ const play = () => {
 
         if (typeof state.player.detachMediaElement === 'function') {
             state.player.detachMediaElement();
+        }
+
+        if (typeof state.player.reset == 'function') {
+            state.player.reset();
         }
 
         state.player = null;
@@ -156,6 +162,9 @@ const play = () => {
         } else {
             console.error("当前浏览器不支持 HLS 播放");
         }
+    } else if (state.suffix == ".mpd") {
+        state.player = dashjs.MediaPlayer().create();
+        state.player.initialize(VideoElement.value, playUrl.value, true)
     }
 
 }
