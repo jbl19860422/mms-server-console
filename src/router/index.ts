@@ -5,6 +5,7 @@ import IndexView from '../views/IndexView.vue';
 import ContentView from '../views/ContentView.vue';
 import StreamView from '../views/live/StreamView.vue';
 import RecordView from '../views/live/RecordView.vue';
+import CountView from '../views/state/CountView.vue';
 
 
 const createRouterInstance = (locale) => {
@@ -45,6 +46,20 @@ const createRouterInstance = (locale) => {
                             name: 'record',
                             alias: locale === 'zh' ? ['/录制'] : [],
                             component: RecordView,
+                        },
+                    ]
+                },
+                {
+                    path: 'state',
+                    name: 'state',
+                    alias: locale === 'zh' ? ['/状态'] : [],
+                    component: ContentView, // 需要一个中间层组件
+                    children: [
+                        {
+                            path: 'count',
+                            name: 'count',
+                            alias: locale === 'zh' ? ['/对象计数'] : [],
+                            component: CountView,
                         },
                     ]
                 }

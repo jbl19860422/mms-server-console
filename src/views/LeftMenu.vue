@@ -13,6 +13,15 @@
                 <router-link to="/live/record">录制管理</router-link>
             </a-menu-item>
         </a-sub-menu>
+        <a-sub-menu key="state">
+            <template #icon>
+                <SearchOutlined />
+            </template>
+            <template #title>状态信息</template>
+            <a-menu-item key="/state/count" @click="leftMenu.openKeys = ['state']">
+                <router-link to="/state/count">对象计数</router-link>
+            </a-menu-item>
+        </a-sub-menu>
 
         <!-- <a-sub-menu key="domain">
             <template #icon>
@@ -39,6 +48,7 @@ import {
     SafetyCertificateFilled,
     SettingFilled,
     PlayCircleOutlined,
+    SearchOutlined,
 } from '@ant-design/icons-vue';
 
 import { ref, watch, reactive, onMounted } from 'vue';

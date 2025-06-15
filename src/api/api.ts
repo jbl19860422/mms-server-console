@@ -8,6 +8,10 @@ const api = {
         const url = config.getBaseUrl() + "/api/version";
         return service.get(url, params, config.header);
     },
+    async obj_count(params) {
+        const url = config.getBaseUrl() + "/api/obj_count";
+        return service.get(url, params, config.header);
+    },
     async domain_apps(params) {
         const url = config.getBaseUrl() + '/api/domain_apps';
         return service.get(url, params, config.header);
