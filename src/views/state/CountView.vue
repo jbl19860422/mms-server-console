@@ -1,5 +1,12 @@
 <template>
     <a-spin :spinning="state.loading">
+        <a-row style="display: flex;flex-direction: row-reverse;">
+            <a-button type="primary" @click="refresh">刷新
+                <template #icon>
+                    <UndoOutlined />
+                </template>
+            </a-button>
+        </a-row>
         <div>
             <a-table class="ant-table-striped" style="margin-top:1vh"
                 :rowClassName="(record, index) => (index % 2 === 1 ? 'table-striped' : null)" :columns="state.columns"
@@ -12,7 +19,7 @@ import { onMounted, reactive, watch, ref } from 'vue';
 import api from "@/api/api";
 import utils from "@/utils/utils";
 import { message } from 'ant-design-vue';
-import { DeleteFilled } from '@ant-design/icons-vue';
+import { DeleteFilled, UndoOutlined } from '@ant-design/icons-vue';
 
 const state = reactive({
     loading: false,
@@ -41,6 +48,10 @@ const state = reactive({
     ],
     data: [],
 });
+
+const refresh = async () => {
+    await queryObjCount();
+}
 
 const queryObjCount = async () => {
     state.loading = true;
