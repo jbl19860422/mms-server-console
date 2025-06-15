@@ -13,7 +13,18 @@ export default {
     return instance.get(url, { params, headers })
   },
   post(url, params, headers) {
-    return instance.post(url, params, { headers })
+    const isWhep = url.includes('.whep');
+    return instance.post(url, params, {
+      headers,
+      responseType: isWhep ? 'text' : 'json'  // 👈 动态处理
+    });
+  },
+  patch(url, params, headers) {
+    const isWhep = url.includes('.whep');
+    return instance.patch(url, params, {
+      headers,
+      responseType: isWhep ? 'text' : 'json'  // 👈 动态处理
+    });
   },
   put(url, params, headers) {
     return instance.put(url, params, { headers })

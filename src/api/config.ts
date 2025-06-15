@@ -13,4 +13,6 @@ const getBaseUrl = () => {
     return protocol + "//" + hostAndPort;
 };
 
-export default {header, getBaseUrl};
+const serverIp = '192.168.108.211';
+
+export default {header, getBaseUrl, serverIp};

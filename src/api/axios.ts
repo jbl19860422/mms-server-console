@@ -14,13 +14,18 @@ initAxios.interceptors.request.use((config) => {
 })
 
 //响应拦截器
-initAxios.interceptors.response.use((response) => {
-    return response.data
-}, (error) => {
-    if (error.response && error.response.status == 401) {
+initAxios.interceptors.response.use(
+  (response) => {
+    const contentType = response.headers['content-type'];
+    if (contentType?.includes('application/json')) {
+      return response.data;
     }
-    console.log(error);
-    return Promise.resolve(error.response.data);
-})
+    return response.data;
+  },
+  (error) => {
+    console.error("响应错误", error);
+    return Promise.reject(error); // ✅ 保证 catch 能捕获
+  }
+);
 //导出
 export default () => initAxios

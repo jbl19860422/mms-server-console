@@ -32,6 +32,7 @@ import { reactive, ref, defineEmits, onMounted, nextTick, onUnmounted, computed 
 import { message } from 'ant-design-vue';
 import api from '@/api/api';
 import Hls from 'hls.js';
+import WebrtcPlayer from '@/webrtc/player';
 import * as dashjs from 'dashjs'
 
 const VideoElement = ref(null)
@@ -55,6 +56,7 @@ const state = reactive({
         { label: ".m3u8", value: ".m3u8" },
         { label: ".ts", value: ".ts" },
         { label: ".mpd", value: ".mpd" },
+        { label: ".whep", value: ".whep" },
     ],
 
     player: null,
@@ -165,8 +167,18 @@ const play = () => {
     } else if (state.suffix == ".mpd") {
         state.player = dashjs.MediaPlayer().create();
         state.player.initialize(VideoElement.value, playUrl.value, true)
-    }
+    } else if (state.suffix == ".whep") {
+        state.player = new WebrtcPlayer();
+        state.player.init({
+            serverIp: config.serverIp,
+            domain: state.playDomain,
+            app: state.playApp,
+            stream: state.stream.stream,
+        });
 
+        state.player.setVideoElement(VideoElement.value);
+        state.player.play({});
+    }
 }
 
 onMounted(() => {
@@ -197,8 +209,19 @@ const show = async (stream) => {
 
 const hide = () => {
     if (state.player) {
-        state.player.destroy()
-        state.player = null
+        if (typeof state.player.destroy === 'function') {
+            state.player.destroy();
+        }
+
+        if (typeof state.player.detachMediaElement === 'function') {
+            state.player.detachMediaElement();
+        }
+
+        if (typeof state.player.disconnect == 'function') {
+            state.player.disconnect();
+        }
+
+        state.player = null;
     }
 
     emits('hide');
