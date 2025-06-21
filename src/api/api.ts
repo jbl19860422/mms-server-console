@@ -24,9 +24,21 @@ const api = {
         const url = config.getBaseUrl() + '/api/app_streams';
         return service.get(url, params, config.header);
     },
+    async domain_recorders(params) {
+        const url = config.getBaseUrl() + '/api/domain_recorders';
+        return service.get(url, params, config.header);
+    },
+    async app_recorders(params) {
+        const url = config.getBaseUrl() + '/api/app_recorders';
+        return service.get(url, params, config.header);
+    },
     async cut_off_stream(params) {
         const url = config.getBaseUrl() + '/api/cut_off_stream';
         return service.get(url, params, config.header);
+    },
+    async stop_recorder(params) {
+        const url = config.getBaseUrl() + '/api/stop_recorder';
+        return service.post(url, params, config.header);
     }
 }
 
