@@ -13,13 +13,13 @@ const createRouterInstance = (locale) => {
     // 根据语言动态生成路由别名
     const aliases = {
         en: {
-            dashboard: ['/dashboard'],
+            dashboard: ['dashboard'],
             live: ['/live'],
             stream: ['/live/stream'],
             record: ['/live/record']
         },
         zh: {
-            dashboard: ['/概览'],
+            dashboard:['/概览'],
             live: ['/直播'],
             stream: ['/直播/在线流'],
             record: ['/直播/录制']

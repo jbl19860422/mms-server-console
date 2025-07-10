@@ -1,7 +1,7 @@
 <template>
     <a-menu v-model:openKeys="leftMenu.openKeys" v-model:selectedKeys="leftMenu.selectedKeys" mode="inline" theme="dark"
         :inline-collapsed="collapsed" :default-active="defaultActive">
-        <a-menu-item key="1">
+        <a-menu-item key="dashboard">
             <template #icon>
                 <DashboardOutlined />
             </template>
@@ -51,8 +51,6 @@
 </template>
 <script lang="ts" setup>
 import {
-    SafetyCertificateFilled,
-    SettingFilled,
     PlayCircleOutlined,
     SearchOutlined,
     DashboardOutlined,
