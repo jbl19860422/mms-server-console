@@ -15,6 +15,8 @@
     "axios": "^1.9.0",
     "cross-env": "^7.0.3",
     "dashjs": "^5.0.3",
+    "highcharts": "^12.3.0",
+    "highcharts-vue": "^2.0.1",
     "hls.js": "^1.6.5",
     "less-loader": "^12.3.0",
     "mpegts.js": "^1.8.0",

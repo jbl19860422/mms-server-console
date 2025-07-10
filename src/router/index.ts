@@ -6,17 +6,20 @@ import ContentView from '../views/ContentView.vue';
 import StreamView from '../views/live/StreamView.vue';
 import RecordView from '../views/live/RecordView.vue';
 import CountView from '../views/state/CountView.vue';
+import DashboardView from '@/views/dashboard/DashboardView.vue';
 
 
 const createRouterInstance = (locale) => {
     // 根据语言动态生成路由别名
     const aliases = {
         en: {
+            dashboard: ['/dashboard'],
             live: ['/live'],
             stream: ['/live/stream'],
             record: ['/live/record']
         },
         zh: {
+            dashboard: ['/概览'],
             live: ['/直播'],
             stream: ['/直播/在线流'],
             record: ['/直播/录制']
@@ -29,6 +32,12 @@ const createRouterInstance = (locale) => {
             name: "basic",
             component: IndexView,
             children: [
+                {
+                    path: 'dashboard',
+                    name: 'dashboard',
+                    alias: locale === 'zh' ? ['/概览'] : [],
+                    component: DashboardView,
+                },
                 {
                     path: 'live',
                     name: 'live',
@@ -53,7 +62,7 @@ const createRouterInstance = (locale) => {
                     path: 'state',
                     name: 'state',
                     alias: locale === 'zh' ? ['/状态'] : [],
-                    component: ContentView, // 需要一个中间层组件
+                    component: ContentView,
                     children: [
                         {
                             path: 'count',

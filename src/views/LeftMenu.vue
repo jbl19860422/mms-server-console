@@ -1,6 +1,12 @@
 <template>
     <a-menu v-model:openKeys="leftMenu.openKeys" v-model:selectedKeys="leftMenu.selectedKeys" mode="inline" theme="dark"
         :inline-collapsed="collapsed" :default-active="defaultActive">
+        <a-menu-item key="1">
+            <template #icon>
+                <DashboardOutlined />
+            </template>
+            <router-link to="/dashboard">概览</router-link>
+        </a-menu-item>
         <a-sub-menu key="live">
             <template #icon>
                 <PlayCircleOutlined />
@@ -49,6 +55,7 @@ import {
     SettingFilled,
     PlayCircleOutlined,
     SearchOutlined,
+    DashboardOutlined,
 } from '@ant-design/icons-vue';
 
 import { ref, watch, reactive, onMounted } from 'vue';
