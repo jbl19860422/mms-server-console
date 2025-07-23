@@ -39,6 +39,10 @@ const api = {
     async stop_recorder(params) {
         const url = config.getBaseUrl() + '/api/stop_recorder';
         return service.post(url, params, config.header);
+    },
+    async get_mem_info(params) {
+        const url = config.getBaseUrl() + '/api/get_mem_info';
+        return service.get(url, params, config.header);
     }
 }
 
