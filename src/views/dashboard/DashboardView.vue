@@ -8,10 +8,38 @@
             </a-button>
         </a-row>
         <div>
-            <div style="width: 100%; height: 400px; display:flex;">
-                <div ref="memUsage"></div>
-                <div ref="chartContainer"></div>
+            <div style="width: 100%; height: 300px; display:flex;gap:1rem;">
+                <div
+                    style="display: flex;flex-direction: row;background-color: #eee;padding:1rem 2rem;border-radius: 10px;">
+                    <div style="width:20rem;padding:4rem;">
+                        <div style="color:#5b5b5b;text-align: center;">总内存：</div>
+                        <div style="font-size: 3rem;text-align: center;margin-top: 10px;font-weight: bold;">100G</div>
+
+                        <div style="color:#5b5b5b;text-align: center;margin-top: 2em;">空闲内存：</div>
+                        <div style="font-size: 3rem;text-align: center;margin-top: 10px;font-weight: bold;">70G</div>
+                    </div>
+                    <div ref="memUsage" style="flex:1"></div>
+                </div>
+
+                <div style="display: flex;flex-direction: row;background-color: #eee;border-radius: 10px;">
+                    <div style="width:20rem;padding-top:3rem;">
+                        <div style="color:#5b5b5b;text-align: center;">当前版本：</div>
+                        <div style="font-size: 3rem;text-align: center;margin-top: 10px;font-weight: bold;">v1.0.0</div>
+
+                        <div style="color:#5b5b5b;text-align: center;margin-top: 2em;">启动时间：</div>
+                        <div style="font-size: 1.5rem;text-align: center;margin-top: 10px;font-weight: bold;">2025-07-23
+                            12:20:20
+                        </div>
+
+                        <div style="color:#5b5b5b;text-align: center;margin-top: 2em;">运行时长：</div>
+                        <div style="font-size: 1.5rem;text-align: center;margin-top: 10px;font-weight: bold;">10天20小时30分
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div>
+            <div ref="chartContainer"></div>
         </div>
     </a-spin>
 </template>
@@ -61,15 +89,17 @@ const state = reactive({
     memUsageChartOptions: {
         chart: {
             type: 'gauge',
+            backgroundColor: "rgb(238, 238, 238)",
             plotBackgroundColor: null,
             plotBackgroundImage: null,
             plotBorderWidth: 0,
             plotShadow: false,
-            height: '80%'
+            width: 300,
+            height: 300,
         },
 
         title: {
-            text: 'Mem Usage'
+            text: '内存使用'
         },
 
         pane: {
